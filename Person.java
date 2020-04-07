@@ -91,9 +91,8 @@ public abstract class Person {
 
 	}
 
-  public abstract void tryToMove(){
-
-	}
+  public abstract void tryToMove();
+ 
   /**
 	   try to move one step in a random direction.
 		 if they way is blocked then don't move.
