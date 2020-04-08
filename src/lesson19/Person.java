@@ -92,10 +92,10 @@ public abstract class Person {
 	}
 
   public abstract void tryToMove();
- 
   /**
 	   try to move one step in a random direction.
 		 if they way is blocked then don't move.
+     turned into an abstract method
 	*/
   void tryToMoveRandomly(){
     int dx = random.nextInt(3)-1; // -1,0,1
@@ -194,7 +194,7 @@ public abstract class Person {
 		}
 
 	}
-	
+
 	void setinfectionProb(double n) {
 		infectionProb = n;
 	}

@@ -1,4 +1,5 @@
 package lesson19;
+//No Changes
 
 public class StayAtHomeIfSick extends Person{
 

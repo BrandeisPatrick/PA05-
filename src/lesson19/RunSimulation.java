@@ -19,6 +19,7 @@ public class RunSimulation {
 		int numSkeptic = Integer.parseInt(args[4]);
 		int numFreqFlier = Integer.parseInt(args[5]);
 		int numCompromised = Integer.parseInt(args[6]);
+		//int variables added for Skeptic, FreqFlier, and Comprimised
 
 		// next we create the population and the country
 		Population population;
