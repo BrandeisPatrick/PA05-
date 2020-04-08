@@ -1,5 +1,5 @@
 package lesson19;
-
+//New Class for Part III
 /**
  * @author mac
  *
@@ -13,7 +13,7 @@ public class Compromised extends Person {
 	 */
 	public Compromised() {
 		super();
-		
+
 		// TODO Auto-generated constructor stub
 		double n = 0.75;
 		super.setinfectionProb(n);
@@ -25,6 +25,3 @@ public class Compromised extends Person {
 	}
 
 }
-
-
-
