@@ -194,5 +194,9 @@ public abstract class Person {
 		}
 
 	}
+	
+	void setinfectionProb(double n) {
+		infectionProb = n;
+	}
 
 }
