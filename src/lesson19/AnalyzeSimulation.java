@@ -6,12 +6,7 @@ public class AnalyzeSimulation {
 	public int days = 0;
 	public int sick = 0;
 	public int maxInfected = 0;
-
-	public AnalyzeSimulation() {
-		// TODO Auto-generated constructor stub
-	}
 	
-	Country country;
 	
 	private static int MAX_TICKS=1000;
 
@@ -26,32 +21,38 @@ public class AnalyzeSimulation {
 		int numCompromised = Integer.parseInt(args[6]);
 		int iterations = Integer.parseInt(args[7]);
 
-		// next we create the population and the country
-		Population population;
+
 
 		//population = new Population(numPeople);
 		//population = new AllStayAtHome(numPeople);
 		//int numEssential = numPeople/10;
 		//int numOther = numPeople/20;
 		//int numStayHome = numPeople - numEssential - numOther;
-		population = new MixedPopulation(numStayHome, numEssential, numSkeptic, numFreqFlier, numCompromised);
-		population.createPeople();
 
-		Country country = new Country(width,height);
-		// and add a link to the population in the country
-		country.population = population;
-		// next we place the people into the country randomly
-		population.placePeople(country);
 		
-		runSim(iterations);
+		AnalyzeSimulation runner = new AnalyzeSimulation();
+		
+		runner.runSim(iterations, width, height, numStayHome, numEssential, numSkeptic, numFreqFlier, numCompromised);
 		
 	}
 	
-	public void runSim(int iterations) {
+	public void runSim(int iterations, int width, int height, int numStayHome, int numEssential, int numSkeptic, int numFreqFlier, int numCompromised) {
 		for (int i = 0; i < iterations; i++) {
+			// next we create the population and the country
+			Population population;
+			population = new MixedPopulation(numStayHome, numEssential, numSkeptic, numFreqFlier, numCompromised);
+			population.createPeople();
+			
+			Country country = new Country(width,height);
+			// and add a link to the population in the country
+			country.population = population;
+			// next we place the people into the country randomly
+			population.placePeople(country);
+			
+			
+			
 			for(int k=0;k<MAX_TICKS; k++) {
 				country.simulateOneStep();
-				country.printState(k);
 
 				if (country.numInfected==0) {
 					break;
