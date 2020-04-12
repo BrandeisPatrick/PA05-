@@ -10,6 +10,7 @@ public class FrequentFlier extends Person {
 		super();
 	}
 
+	//Tries to move to any open spot on the board
 	public void tryToMove() {
 
 	      int i = random.nextInt(country.places.length);

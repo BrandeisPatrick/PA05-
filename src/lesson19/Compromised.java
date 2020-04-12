@@ -1,16 +1,11 @@
 package lesson19;
 //New Class for Part III
 /**
- * @author mac
- *
+This new class of Person has an increased risk for becoming infected
+the setInfectionProb is higher. No other changes to the super class.
  */
 public class Compromised extends Person {
-
-	/**
-	 * @param x
-	 * @param y
-	 * @param country
-	 */
+	
 	public Compromised() {
 		super();
 
@@ -19,7 +14,7 @@ public class Compromised extends Person {
 		super.setinfectionProb(n);
 	}
 
-	@Override
+	//Overrides super class
 	public void tryToMove() {
 		super.tryToMoveRandomly();
 	}

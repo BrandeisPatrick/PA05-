@@ -15,6 +15,9 @@ import java.util.Random;
 
 */
 
+//4/6/2020
+//We made the tick method abstract
+
 public abstract class Person {
   // the persons fate depends on some random variables...
   private Random random = new Random();
@@ -91,6 +94,7 @@ public abstract class Person {
 
 	}
 
+	//made this method abstract
   public abstract void tryToMove();
   /**
 	   try to move one step in a random direction.

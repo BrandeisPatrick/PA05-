@@ -10,7 +10,13 @@ Person or some subclass of Person.
 The Population class can have subclasses of different
 kinds of populations!
 
+The default type of Person is Skeptic
+
 */
+
+//4/6/20
+//no change 
+
 public class Population{
   public Person[] people;
   private int numPeople = 0;

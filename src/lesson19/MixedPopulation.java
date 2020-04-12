@@ -1,5 +1,5 @@
 package lesson19;
-//Minor Changes to add new classes
+//Minor Changes to add new classes of people including Skeptic, FreqFlier, and Compromised
 public class MixedPopulation extends Population{
   int numShelterInPlace;
   int numEssential;
@@ -17,6 +17,7 @@ public class MixedPopulation extends Population{
     this.numCompromised = numCompromised;
 
   }
+  
 //Creates different classes for different people
   public void createPeople(){
     for(int i=0; i<this.numShelterInPlace; i++){
