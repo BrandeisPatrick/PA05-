@@ -10,6 +10,7 @@ public class AnalyzeSimulation {
 	//Data collected
 
 	private static int MAX_TICKS=1000;
+	//Maximum number of ticks for simulation
 
 	public static void main(String[] args) {
 
@@ -21,7 +22,7 @@ public class AnalyzeSimulation {
 		int numFreqFlier = Integer.parseInt(args[5]);
 		int numCompromised = Integer.parseInt(args[6]);
 		int iterations = Integer.parseInt(args[7]);
-		//Input parameters for Country and number of each type of people
+		//Input parameters for Country, number of iterations for analysis, and number of each type of people
 
 
 		//population = new Population(numPeople);
@@ -54,19 +55,22 @@ public class AnalyzeSimulation {
 
 			for(int k=0;k<MAX_TICKS; k++) {
 				country.simulateOneStep();
-
+				//Simulates one day by moving, infecting, and recovering people
 				if (country.numInfected==0) {
 					break;
-
+					//If nobody is infected, loop is broken and moved onto the next iteration
 				}
 
 				if (country.numInfected > maxInfected) {
 					maxInfected = country.numInfected;
+					//Keeps track of the maximum number of people infected at any time
 				}
 				days+=1;
+				//Keeps track of the total number of days it takes for the people to completely recover
 			}
 
 			sick = sick + country.numInfected + country.numRecovered;
+			//Keeps track of the total number of sick people
 		}
 		System.out.println("Average number of days until no new infections: " + days/iterations);
 		System.out.println("Average number of people infected/recovered: " + sick/iterations);
