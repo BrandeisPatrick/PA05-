@@ -59,8 +59,8 @@ public class AnalyzeSimulation {
 			sick = sick + country.numInfected + country.numRecovered;
 			System.out.println("days: " + days + " sick: " + sick + " maxinfected: " + maxInfected);
 		}
-		System.out.println("total num days: " + days + "Average number of days until no new infections: " + (days/iterations));
-		System.out.println("Average number of people infected/recovered: " + (sick/iterations));
+		System.out.println("total num days: " + days + ", Average number of days until no new infections: " + (days/iterations));
+		System.out.println("total num infected: " + sick + ", Average number of people infected/recovered: " + (sick/iterations));
 		System.out.println("The max number of people infected at any one time was: " + maxInfected);
 	}
 }
