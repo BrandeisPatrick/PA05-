@@ -4,6 +4,8 @@ package lesson19;
  * out prints results from it
  */
 
+import java.util.Random;
+
 public class AnalyzeSimulation {
 
 	public static int days = 0;
@@ -12,8 +14,11 @@ public class AnalyzeSimulation {
 
 
 	private static int MAX_TICKS=1000;
+	private Random random = new Random();
 
 	public static void main(String[] args) {
+		int totalDays = 0;
+		int totalSick = 0;
 
 		int width = Integer.parseInt(args[0]);
 		int height = Integer.parseInt(args[1]);
@@ -23,8 +28,6 @@ public class AnalyzeSimulation {
 		int numFreqFlier = Integer.parseInt(args[5]);
 		int numCompromised = Integer.parseInt(args[6]);
 		int iterations = Integer.parseInt(args[7]);
-
-
 
 		//population = new Population(numPeople);
 		//population = new AllStayAtHome(numPeople);
@@ -56,11 +59,14 @@ public class AnalyzeSimulation {
 				}
 			}
 
-			sick = sick + country.numInfected + country.numRecovered;
+			sick += country.numInfected + country.numRecovered;
+			totalSick += sick;
+			totalDays += days;
 			System.out.println("days: " + days + " sick: " + sick + " maxinfected: " + maxInfected);
 		}
-		System.out.println("total num days: " + days + ", Average number of days until no new infections: " + (days/iterations));
-		System.out.println("total num infected: " + sick + ", Average number of people infected/recovered: " + (sick/iterations));
+		System.out.println();
+		System.out.println("total num days: " + totalDays + ", Average number of days until no new infections: " + (totalDays/iterations));
+		System.out.println("total num infected: " + totalSick + ", Average number of people infected/recovered: " + (totalSick/iterations));
 		System.out.println("The max number of people infected at any one time was: " + maxInfected);
 	}
 }
