@@ -1,12 +1,13 @@
 package lesson19;
-//No Change
+//New class for Part IV
 
 public class AnalyzeSimulation {
 
 	public int days = 0;
 	public int sick = 0;
 	public int maxInfected = 0;
-
+	//Create integers that need to be printed at end of simulations
+	//Data collected
 
 	private static int MAX_TICKS=1000;
 
@@ -20,7 +21,7 @@ public class AnalyzeSimulation {
 		int numFreqFlier = Integer.parseInt(args[5]);
 		int numCompromised = Integer.parseInt(args[6]);
 		int iterations = Integer.parseInt(args[7]);
-
+		//Input parameters for Country and number of each type of people
 
 
 		//population = new Population(numPeople);
