@@ -19,11 +19,11 @@ import java.util.Random;
 //We made the tick method abstract
 
 public abstract class Person {
-  // the persons fate depends on some random variables...
+
   private Random random = new Random();
 
   // we use the counter to give each Person a unique id
-	private static int counter=1;
+  private static int counter=1;
   int id = 0;
 
   // Next we need the location of the Person
@@ -31,7 +31,6 @@ public abstract class Person {
 	int x;
 	int y;
 	Country country;
-
 
   // next we record their infection status
 	boolean infected = false;

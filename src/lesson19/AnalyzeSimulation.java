@@ -12,9 +12,9 @@ public class AnalyzeSimulation {
 	public static int sick = 0;
 	public static int maxInfected = 0;
 
-
 	private static int MAX_TICKS=1000;
 	private Random random = new Random();
+
 
 	public static void main(String[] args) {
 		int totalDays = 0;
@@ -29,25 +29,23 @@ public class AnalyzeSimulation {
 		int numCompromised = Integer.parseInt(args[6]);
 		int iterations = Integer.parseInt(args[7]);
 
-		//population = new Population(numPeople);
-		//population = new AllStayAtHome(numPeople);
-		//int numEssential = numPeople/10;
-		//int numOther = numPeople/20;
-		//int numStayHome = numPeople - numEssential - numOther;
 
+		//run a given number of trials
 		for (int i = 0; i < iterations; i++) {
 			System.out.println("Run: " + (i+1));
-			// next we create the population and the country
+
+			//create the population and the country
 			Population population;
 			population = new MixedPopulation(numStayHome, numEssential, numSkeptic, numFreqFlier, numCompromised);
 			population.createPeople();
 
-			Country country = new Country(width,height);
-			// and add a link to the population in the country
+			Country country = new Country(height,width);
+			// add population in the country
 			country.population = population;
-			// next we place the people into the country randomly
+			// place the people into the country randomly
 			population.placePeople(country);
 
+			//move for MAX_TICKS steps, then stop
 			for(int k=0;k<MAX_TICKS; k++) {
 				country.simulateOneStep();
 				days++;
