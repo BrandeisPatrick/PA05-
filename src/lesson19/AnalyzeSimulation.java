@@ -4,17 +4,21 @@ package lesson19;
  * out prints results from it
  */
 
+import java.util.Random;
+
 public class AnalyzeSimulation {
 
 	public static int days = 0;
 	public static int sick = 0;
 	public static int maxInfected = 0;
 
-
 	private static int MAX_TICKS=1000;
-	//Maximum number of ticks for simulation
+	private Random random = new Random();
+
 
 	public static void main(String[] args) {
+		int totalDays = 0;
+		int totalSick = 0;
 
 		int width = Integer.parseInt(args[0]);
 		int height = Integer.parseInt(args[1]);
@@ -26,26 +30,22 @@ public class AnalyzeSimulation {
 		int iterations = Integer.parseInt(args[7]);
 		//Input parameters for Country, number of iterations for analysis, and number of each type of people
 
-
-		//population = new Population(numPeople);
-		//population = new AllStayAtHome(numPeople);
-		//int numEssential = numPeople/10;
-		//int numOther = numPeople/20;
-		//int numStayHome = numPeople - numEssential - numOther;
-
+		//run a given number of trials
 		for (int i = 0; i < iterations; i++) {
 			System.out.println("Run: " + (i+1));
-			// next we create the population and the country
+
+			//create the population and the country
 			Population population;
 			population = new MixedPopulation(numStayHome, numEssential, numSkeptic, numFreqFlier, numCompromised);
 			population.createPeople();
 
-			Country country = new Country(width,height);
-			// and add a link to the population in the country
+			Country country = new Country(height,width);
+			// add population in the country
 			country.population = population;
-			// next we place the people into the country randomly
+			// place the people into the country randomly
 			population.placePeople(country);
 
+			//move for MAX_TICKS steps, then stop
 			for(int k=0;k<MAX_TICKS; k++) {
 				country.simulateOneStep();
 				days++;
@@ -58,11 +58,14 @@ public class AnalyzeSimulation {
 				}
 			}
 
-			sick = sick + country.numInfected + country.numRecovered;
+			sick += country.numInfected + country.numRecovered;
+			totalSick += sick;
+			totalDays += days;
 			System.out.println("days: " + days + " sick: " + sick + " maxinfected: " + maxInfected);
 		}
-		System.out.println("total num days: " + days + "Average number of days until no new infections: " + (days/iterations));
-		System.out.println("Average number of people infected/recovered: " + (sick/iterations));
+		System.out.println();
+		System.out.println("total num days: " + totalDays + ", Average number of days until no new infections: " + (totalDays/iterations));
+		System.out.println("total num infected: " + totalSick + ", Average number of people infected/recovered: " + (totalSick/iterations));
 		System.out.println("The max number of people infected at any one time was: " + maxInfected);
 	}
 }

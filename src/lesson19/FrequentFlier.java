@@ -1,18 +1,23 @@
-package lesson19;
 //New Class for Part II
+package lesson19;
 import java.util.Random;
 
 public class FrequentFlier extends Person {
-
 	private Random random = new Random();
 
+	/*
+	Constructor
+	 */
 	public FrequentFlier() {
 		super();
 	}
 
-	//Tries to move to any open spot on the board
-	public void tryToMove() {
 
+	/*
+	@Overrides
+	Frequent Flyer will move to a random available spot every tick
+	 */
+	public void tryToMove() {
 	      int i = random.nextInt(country.places.length);
 	      int j = random.nextInt(country.places[i].length);
 	      while (country.places[i][j] != null) {

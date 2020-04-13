@@ -1,5 +1,6 @@
+//added new fields: numSkeptic, numFreqFlier, and numCompromised
 package lesson19;
-//Minor Changes to add new classes of people including Skeptic, FreqFlier, and Compromised
+
 public class MixedPopulation extends Population{
   int numShelterInPlace;
   int numEssential;
