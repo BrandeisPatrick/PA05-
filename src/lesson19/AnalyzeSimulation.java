@@ -1,7 +1,7 @@
 package lesson19;
 /*
  * This class runs the simulation a number of times and
- * out prints results from it
+ * prints out results from it (Part IV)
  */
 
 import java.util.Random;
@@ -11,6 +11,7 @@ public class AnalyzeSimulation {
 	public static int days = 0;
 	public static int sick = 0;
 	public static int maxInfected = 0;
+	//Variables that will be printed
 
 	private static int MAX_TICKS=1000;
 	private Random random = new Random();
@@ -49,8 +50,10 @@ public class AnalyzeSimulation {
 			for(int k=0;k<MAX_TICKS; k++) {
 				country.simulateOneStep();
 				days++;
+				//Adds up the total number of days
 				if (country.numInfected==0) {
 					break;
+					//End of one simulation/iteration
 				}
 				if (country.numInfected > maxInfected) {
 					maxInfected = country.numInfected;
@@ -59,8 +62,8 @@ public class AnalyzeSimulation {
 			}
 
 			sick += country.numInfected + country.numRecovered;
-			totalSick += sick;
-			totalDays += days;
+			totalSick += sick; //Total number of sick people in all simulations
+			totalDays += days; //Total number of days in all simulations
 			System.out.println("days: " + days + " sick: " + sick + " maxinfected: " + maxInfected);
 		}
 		System.out.println();
