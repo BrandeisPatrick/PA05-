@@ -1,13 +1,15 @@
 package lesson19;
-//New class for Part IV
+/*
+ * This class runs the simulation a number of times and
+ * out prints results from it
+ */
 
 public class AnalyzeSimulation {
 
-	public int days = 0;
-	public int sick = 0;
-	public int maxInfected = 0;
-	//Create integers that need to be printed at end of simulations
-	//Data collected
+	public static int days = 0;
+	public static int sick = 0;
+	public static int maxInfected = 0;
+
 
 	private static int MAX_TICKS=1000;
 	//Maximum number of ticks for simulation
@@ -31,15 +33,8 @@ public class AnalyzeSimulation {
 		//int numOther = numPeople/20;
 		//int numStayHome = numPeople - numEssential - numOther;
 
-
-		AnalyzeSimulation runner = new AnalyzeSimulation();
-
-		runner.runSim(iterations, width, height, numStayHome, numEssential, numSkeptic, numFreqFlier, numCompromised);
-
-	}
-
-	public void runSim(int iterations, int width, int height, int numStayHome, int numEssential, int numSkeptic, int numFreqFlier, int numCompromised) {
 		for (int i = 0; i < iterations; i++) {
+			System.out.println("Run: " + (i+1));
 			// next we create the population and the country
 			Population population;
 			population = new MixedPopulation(numStayHome, numEssential, numSkeptic, numFreqFlier, numCompromised);
@@ -51,30 +46,23 @@ public class AnalyzeSimulation {
 			// next we place the people into the country randomly
 			population.placePeople(country);
 
-
-
 			for(int k=0;k<MAX_TICKS; k++) {
 				country.simulateOneStep();
-				//Simulates one day by moving, infecting, and recovering people
+				days++;
 				if (country.numInfected==0) {
 					break;
-					//If nobody is infected, loop is broken and moved onto the next iteration
 				}
-
 				if (country.numInfected > maxInfected) {
 					maxInfected = country.numInfected;
 					//Keeps track of the maximum number of people infected at any time
 				}
-				days+=1;
-				//Keeps track of the total number of days it takes for the people to completely recover
 			}
 
 			sick = sick + country.numInfected + country.numRecovered;
-			//Keeps track of the total number of sick people
+			System.out.println("days: " + days + " sick: " + sick + " maxinfected: " + maxInfected);
 		}
-		System.out.println("Average number of days until no new infections: " + days/iterations);
-		System.out.println("Average number of people infected/recovered: " + sick/iterations);
+		System.out.println("total num days: " + days + "Average number of days until no new infections: " + (days/iterations));
+		System.out.println("Average number of people infected/recovered: " + (sick/iterations));
 		System.out.println("The max number of people infected at any one time was: " + maxInfected);
 	}
-
 }
