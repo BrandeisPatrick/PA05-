@@ -16,6 +16,7 @@ public class FrequentFlier extends Person {
 	/*
 	@Overrides
 	Frequent Flyer will move to a random available spot every tick
+	Random spot doesn't have to be next to previous spot
 	 */
 	public void tryToMove() {
 	      int i = random.nextInt(country.places.length);
@@ -28,5 +29,6 @@ public class FrequentFlier extends Person {
 	      //System.out.println("placing "+p.id+" at "+i+","+j);
 
 	      this.setPosition(i,j);
+				//Places FrequentFlier in new location
 	    }
 	}

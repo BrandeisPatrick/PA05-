@@ -13,6 +13,7 @@ public class Skeptic extends Person{
 
 	/*
 	Skeptic people try to move randomly at every tick
+	New spot is next to old spot
 	 */
 	public void tryToMove() {
 		//Overrides abstract method in Person
