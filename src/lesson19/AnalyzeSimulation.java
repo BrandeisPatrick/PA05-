@@ -8,16 +8,17 @@ import java.util.Random;
 
 public class AnalyzeSimulation {
 
-	public static int days = 0;
-	public static int sick = 0;
-	public static int maxInfected = 0;
 	//Variables that will be printed
 
-	private static int MAX_TICKS=1000;
+	private static final int MAX_TICKS=1000;
 	private Random random = new Random();
 
 
 	public static void main(String[] args) {
+		int days = 0;
+		int sick = 0;
+		int maxInfected = 0;
+
 		int totalDays = 0;
 		int totalSick = 0;
 
