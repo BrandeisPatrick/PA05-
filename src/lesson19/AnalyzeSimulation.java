@@ -63,10 +63,14 @@ public class AnalyzeSimulation {
 
 			System.out.println("infected  = " + country.numInfected);
 			System.out.println("recovered = " + country.numRecovered);
+			System.out.println();
 			sick += country.numInfected + country.numRecovered;
 			System.out.println("sick      = " + sick);
 			totalSick += sick; //Total number of sick people in all simulations
 			System.out.println("totalSick = " + totalSick);
+			System.out.println("days      = " + days);
+			System.out.println();
+			System.out.println("/////////////////////////////" );
 			totalDays += days; //Total number of days in all simulations
 			//System.out.println("days: " + days + " sick: " + sick + " maxinfected: " + maxInfected);
 		}
