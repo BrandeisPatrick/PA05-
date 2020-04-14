@@ -63,10 +63,6 @@ public class AnalyzeSimulation {
 			}
 
 			sick += country.numInfected + country.numRecovered;
-			System.out.println("Days" + days );
-			System.out.println("sick" + country.numInfected );
-			System.out.println("reck" + country.numRecovered );
-			System.out.println();
 		}
 		//prints final stats
 		System.out.println("Average number of days until no new infections: " + (days/iterations));
