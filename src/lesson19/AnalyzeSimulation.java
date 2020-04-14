@@ -8,17 +8,16 @@ import java.util.Random;
 
 public class AnalyzeSimulation {
 
+	public static int days = 0;
+	public static int sick = 0;
+	public static int maxInfected = 0;
 	//Variables that will be printed
 
-	private static final int MAX_TICKS=1000;
+	private static int MAX_TICKS=1000;
 	private Random random = new Random();
 
 
 	public static void main(String[] args) {
-		int days = 0;
-		int sick = 0;
-		int maxInfected = 0;
-
 		int totalDays = 0;
 		int totalSick = 0;
 
@@ -63,13 +62,10 @@ public class AnalyzeSimulation {
 			}
 
 			sick += country.numInfected + country.numRecovered;
-			totalSick += sick; //Total number of sick people in all simulations
-			totalDays += days; //Total number of days in all simulations
-			//System.out.println("days: " + days + " sick: " + sick + " maxinfected: " + maxInfected);
 		}
 
 		//prints final stats
-		System.out.println("Average number of days until no new infections: " + (totalDays/iterations));
+		System.out.println("Average number of days until no new infections: " + (days/iterations));
 		System.out.println("Average number of people infected/recovered: " + (sick/iterations));
 		System.out.println("The max number of people infected at any one time was: " + maxInfected);
 	}
